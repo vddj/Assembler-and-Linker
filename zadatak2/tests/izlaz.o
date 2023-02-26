@@ -1,0 +1,34 @@
+
+ Symbol table
+ID     name          section       value  res    type   
+1      myStart       und           0      0      symbol 
+2      myCounter     und           0      0      symbol 
+3      term_out      allSec        ff00   1      symbol 
+4      term_in       allSec        ff02   1      symbol 
+5      asciiCode     allSec        84     1      symbol 
+6      isr_reset     isr           0      1      label  
+7      isr_timer     isr           5      1      label  
+8      isr_terminal  isr           16     1      label  
+
+ Relocation table
+section   offset type      symbol 
+ivt       0      abs_data  isr_reset
+ivt       4      abs_data  isr_timer
+ivt       6      abs_data  isr_terminal
+isr       3      abs_data  myStart
+isr       29     pc_rel    myCounter
+isr       35     memory    myCounter
+
+#ivt
+0000: 00 00 00 00 05 00 16 00  
+0008: 00 00 00 00 00 00 00 00  
+#isr
+0000: 50 f0 00 00 00 b0 06 12  
+0008: a0 00 00 00 84 b0 00 04  
+0010: ff 00 a0 06 42 20 b0 06  
+0018: 12 b0 16 12 a0 00 04 ff  
+0020: 02 b0 00 04 ff 00 a0 07  
+0028: 03 00 00 a0 10 00 00 01  
+0030: 70 01 b0 00 04 00 00 a0  
+0038: 16 42 a0 06 42 20  
+#end

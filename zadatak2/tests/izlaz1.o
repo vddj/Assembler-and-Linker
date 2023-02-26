@@ -1,0 +1,20 @@
+
+ Symbol table
+ID     name          section       value  res    type   
+1      myStart       myCode        0      1      label  
+2      myCounter     myData        0      1      label  
+3      tim_cfg       allSec        ff10   1      symbol 
+4      wait          myCode        a      1      label  
+
+ Relocation table
+section   offset type      symbol 
+myCode    d      memory    myCounter
+
+#myCode
+0000: a0 00 00 00 01 b0 00 04  
+0008: ff 10 a0 00 04 00 00 a0  
+0010: 10 00 00 05 74 01 52 f0  
+0018: 00 00 0a 00  
+#myData
+0000: 00 00  
+#end
